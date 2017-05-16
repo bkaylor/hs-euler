@@ -1,8 +1,8 @@
 -- Largest prime factor
 
-isprime x = null [a | a <- [2..x], k `mod` x == 0]
+isPrime x = null [a | a <- [2..x], k `mod` x == 0]
 
-prime-list x = [a | a <- [2..x], isprime a]
+primeList x = [a | a <- [2..x], isPrime a]
 
 lpf :: Int -> Int
 lpf x = 
