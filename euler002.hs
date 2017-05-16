@@ -1,4 +1,5 @@
 -- Even Fibonacci numbers
+-- SLOW, NAIIVE
 fib :: Int -> Int
 fib 0 = 0
 fib 1 = 1
@@ -13,3 +14,14 @@ fibsum i y xs
 
 euler2 :: Int -> Int
 euler2 y = fibsum 0 y []
+
+-- SLOW, LIST COMP
+euler2' :: Int -> Int
+euler2' y = sum [x | x <- takeWhile (< y) (map fib [1..]), even x]
+
+-- FAST, LIST COMP
+buildFib :: Int -> Int -> [Int]
+buildFib a b = a : buildFib b (a+b) 
+
+euler2'' :: Int -> Int
+euler2'' y = sum [x | x <- takeWhile (< y) (buildFib 0 1), even x]
