@@ -1,12 +1,12 @@
 -- Largest prime factor
 isPrime :: Int -> Bool
-isPrime x = null [a | a <- [2..x-1], x `mod` a == 0]
+isPrime x = null [a | a <- [2..isqrt x], x `mod` a == 0]
 
 isqrt :: Int -> Int
 isqrt = floor . sqrt . fromIntegral
 
 primeList :: Int -> [Int]
-primeList x = [a | a <- [2..isqrt x], isPrime a]
+primeList x = [a | a <- [2..x-1], isPrime a]
 
 lpf :: Int -> Int
 lpf x = maximum [a | a <- primeList x, x `mod` a == 0]
