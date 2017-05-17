@@ -5,11 +5,11 @@ isPrime x = null [a | a <- [2..isqrt x], x `mod` a == 0]
 isqrt :: Int -> Int
 isqrt = floor . sqrt . fromIntegral
 
-primeList :: Int -> [Int]
-primeList x = [a | a <- [2..x-1], isPrime a]
+primeFactorList :: Int -> [Int]
+primeFactorList x = [a | a <- [2..isqrt x], isPrime a, x `mod` a == 0] 
 
 lpf :: Int -> Int
-lpf x = maximum [a | a <- primeList x, x `mod` a == 0]
+lpf x = maximum [a | a <- primeFactorList x]
 
 euler3 :: Int -> Int
 euler3 x = lpf x
