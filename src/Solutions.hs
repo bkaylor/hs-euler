@@ -1,12 +1,12 @@
 module Solutions
-    ( euler1
-      euler2
-      euler3
-      euler4
-      euler5
-      euler6
-      euler7
-      euler8
+    ( euler1,
+      euler2,
+      euler3,
+      euler4,
+      euler5,
+      euler6,
+      euler7,
+      --euler8
     ) where
 
 import Utilities
@@ -37,14 +37,8 @@ largestPrimeFactor x
     | isPrime x = x
     | otherwise = largestPrimeFactor (x `div` firstPrimeFactor x)
 
-isPrime :: Int -> Bool
-isPrime x = null [a | a <- [2..isqrt x], x `mod` a == 0]
-
 firstPrimeFactor :: Int -> Int
 firstPrimeFactor x = head [a | a <- [2..isqrt x], x `mod` a == 0, isPrime a]
-
-isqrt :: Int -> Int
-isqrt = floor . sqrt . fromIntegral
 
 ------------------------------
 -- Largest palindrome product
@@ -96,21 +90,16 @@ euler7 x = nthPrime x
 nthPrime :: Int -> Int
 nthPrime n = last ((take n) [a | a <- [2..], isPrime a])
 
-isPrime :: Int -> Bool
-isPrime x = null [a | a <- [2..isqrt x], x `mod` a == 0]
-
-isqrt :: Int -> Int
-isqrt = floor . sqrt . fromIntegral
-
 ------------------------------
 -- Largest product in a series
-euler8 :: Int -> Int
-euler8 x = readFile file >>= largestProduct x
-    where file = "../misc/euler8_resource.txt"
+-- euler8 :: Int -> Int
+-- euler8 x = readFile file >>= largestProduct x
+--     where file = "../misc/euler8_resource.txt"
+-- 
+-- largestProduct :: Int -> String -> Int
+-- largestProduct x contents = maximum (map f [0..(length contents) - x])
+--     where f = getRunningProduct x contents
+-- 
+-- getRunningProduct :: Int -> String -> Int -> Int
+-- getRunningProduct x contents start = product (map ord (take x (drop start contents)))
 
-largestProduct :: Int -> String -> Int
-largestProduct x contents = maximum (map f [0..(length contents) - x])
-    where f = getRunningProduct x contents
-
-getRunningProduct :: Int -> String -> Int -> Int
-getRunningProduct x contents 

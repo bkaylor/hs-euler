@@ -3,4 +3,4 @@ module Main where
 import Solutions
 
 main :: IO ()
-main = someFunc
+main = putStrLn "Whats a main?"
