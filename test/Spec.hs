@@ -9,8 +9,8 @@ main = runTestTT $ TestList [testEuler1,
                              testEuler4,
                              testEuler5,
                              testEuler6,
-                             testEuler7]--,
-                             --testEuler8]
+                             testEuler7,
+                             testEuler8]
 
 testEuler1 :: Test
 testEuler1 = TestCase $ assertEqual "Should pass" 233168 (euler1 1000)
@@ -33,6 +33,5 @@ testEuler6 = TestCase $ assertEqual "Should pass" 25164150 (euler6 100)
 testEuler7 :: Test
 testEuler7 = TestCase $ assertEqual "Should pass" 104743 (euler7 10001)
 
--- TODO(bkaylor): Fix this one!
--- testEuler8 :: Test
--- testEuler8 = TestCase $ assertEqual "Should pass" 0 (euler8 13)
+testEuler8 :: Test
+testEuler8 = TestCase $ assertEqual "Should pass" 5832 (euler8 4)

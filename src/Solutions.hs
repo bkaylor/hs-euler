@@ -6,7 +6,7 @@ module Solutions
       euler5,
       euler6,
       euler7,
-      --euler8
+      euler8
     ) where
 
 import Utilities
@@ -92,14 +92,16 @@ nthPrime n = last ((take n) [a | a <- [2..], isPrime a])
 
 ------------------------------
 -- Largest product in a series
--- euler8 :: Int -> Int
--- euler8 x = readFile file >>= largestProduct x
---     where file = "../misc/euler8_resource.txt"
--- 
--- largestProduct :: Int -> String -> Int
--- largestProduct x contents = maximum (map f [0..(length contents) - x])
---     where f = getRunningProduct x contents
--- 
--- getRunningProduct :: Int -> String -> Int -> Int
--- getRunningProduct x contents start = product (map ord (take x (drop start contents)))
-
+-- TODO(bkaylor): How to make this testable? Research & implement.
+euler8 :: Int -> IO Int
+euler8 x = do
+    contents <- readFile filename
+    return (largestProduct x contents)
+        where filename = "misc/euler8_resource.txt"
+ 
+largestProduct :: Int -> String -> Int
+largestProduct x contents = maximum (map f [0..(length contents) - x])
+    where f = getRunningProduct x contents
+ 
+getRunningProduct :: Int -> String -> Int -> Int
+getRunningProduct x contents start = product (map ord (take x (drop start contents)))
